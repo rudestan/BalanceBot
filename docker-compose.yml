@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+    php:
+        build: docker/php
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        mem_limit: 2000000000
+        links:
+            - memcached
+
+    memcached:
+        image: memcached

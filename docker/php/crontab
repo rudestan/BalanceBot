@@ -1,0 +1,1 @@
+* * * * * root /usr/local/bin/php /var/www/vendor/bin/teebot emulator:message /var/www/src /balance >> /var/log/cron.log 2>&1

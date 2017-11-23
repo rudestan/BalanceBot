@@ -1,0 +1,31 @@
+teebot:
+    token: '%telegram_token%'
+    name: 'Example bot'
+    url: 'https://api.telegram.org'
+    file_url: 'https://api.telegram.org/file/bot'
+    method: 'GET'
+    bot_prefix: 'bot'
+    timeout: 3
+    options:
+        memcached_server: '%memcached_server%'
+    events:
+        -
+            command: 'Balance'
+            type: 'Command'
+            class: BalanceBot\Command\Balance
+            params:
+                ing:
+                    bank: 'ING-DiBa'
+                    login_str: '-l %diba_login%'
+                    pin_str: '-p %diba_pin%'
+                    key_str: '-d %diba_key%'
+                    phantom_script: 'ingdiba.js'
+        -
+            command: 'Subscribe'
+            type: 'Command'
+            class: BalanceBot\Command\Subscribe
+            params:
+                security:
+                    adminpass: '%admin_pass%'
+    logger:
+        filename: 'logs/log.txt'

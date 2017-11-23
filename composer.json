@@ -1,0 +1,10 @@
+{
+    "require": {
+        "rudestan/teebot": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "BalanceBot\\": "./src"
+        }
+    }
+}
