@@ -9,8 +9,7 @@ To run configured bot you even do not have to install anything except the Docker
 all you have to do is just run ```docker-compose up -d``` and enjoy.
 
 Note: It is not yet fully finished. The idea is to check the balance with Cron that is why there is a cron
-job in the crontab config of the docker. At the moment cron job starts every minute! this value is for testing
-only and should be changed to something reasonable (e.g. 1 hour). Also the bot listener
+job in the crontab config of the docker. At the moment cron job starts every hour. Also the bot listener
 daemon starting by default to be able to subscribe on notifications. To subscribe you should define the
 password in ```.env``` file and then send ```/subscribe <YOUR PASS>``` command from your Telegram client
  to the bot.
