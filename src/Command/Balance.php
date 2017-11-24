@@ -32,7 +32,6 @@ class Balance extends AbstractCommand
         }
 
         foreach ($this->params as $name => $params) {
-
             $this->initWithParams($params);
 
             $data = $this->phantomExecutor->runScript();
@@ -76,6 +75,10 @@ class Balance extends AbstractCommand
         }
     }
 
+    /**
+     * @param $currentChatId
+     * @param $html
+     */
     protected function sendToAllChats($currentChatId, $html)
     {
         $chatIds = $this->getChatIds();
@@ -101,6 +104,10 @@ class Balance extends AbstractCommand
         }
     }
 
+    /**
+     * @param $chatId
+     * @param $html
+     */
     protected function sendHtml($chatId, $html)
     {
         $sendMessage = new SendMessage();
@@ -112,11 +119,17 @@ class Balance extends AbstractCommand
         $this->processor->call($sendMessage, true);
     }
 
+    /**
+     * @return mixed
+     */
     protected function getMemcachedServer()
     {
         return $this->processor->getConfig()->get('options.memcached_server');
     }
 
+    /**
+     * @return mixed
+     */
     protected function getChatIds()
     {
         return $this->cache->getWithPostfix(Subscribe::CACHE_KEY_POSTFIX);

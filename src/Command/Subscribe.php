@@ -33,6 +33,9 @@ class Subscribe extends AbstractCommand
         }
     }
 
+    /**
+     * @return string
+     */
     protected function getPassFromArgs()
     {
         if (empty($this->args)) {
@@ -44,15 +47,29 @@ class Subscribe extends AbstractCommand
         return $args[0];
     }
 
+    /**
+     * @return null
+     */
     protected function getAdminPass()
     {
         return isset($this->params['security']['adminpass']) ? $this->params['security']['adminpass'] : null;
     }
 
+    /**
+     * @param $providedPassword
+     * @param $adminPassword
+     *
+     * @return bool
+     */
     protected function isPasswordValid($providedPassword, $adminPassword) {
         return md5($providedPassword) == $adminPassword;
     }
 
+    /**
+     * @param $chatId
+     *
+     * @return bool
+     */
     protected function subscribeChatId($chatId)
     {
         $memcacheServer = $this->processor->getConfig()->get('options.memcached_server');
